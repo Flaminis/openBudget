@@ -11,6 +11,7 @@
             </div>
           </div>
         </div>
+
         <b-tabs type="is-boxed is-centered" size="is-medium">
           <b-tab-item label="Консолидированный">
             <br>
@@ -152,9 +153,15 @@
         sortedYears.forEach((y, i) => {
           if (y === e['Год']) {
             if (!tmp[i]) {
-              tmp[i] = e['Сумма']
+              tmp[i] = e['Сумма'] ? e['Сумма'] : 0
             } else {
-              tmp[i] += e['Сумма']
+              tmp[i] += e['Сумма'] ? e['Сумма'] : 0
+            }
+          } else {
+            if (!tmp[i]) {
+              tmp[i] = 0
+            } else {
+              tmp[i] += 0
             }
           }
         })
@@ -210,7 +217,14 @@
               stacking: 'normal',
               dataLabels: {
                 enabled: true,
-                color: 'white'
+                color: 'white',
+                formatter () {
+                  var val = this.y
+                  if (val < 1) {
+                    return ''
+                  }
+                  return val
+                }
               }
             }
           }
@@ -253,6 +267,30 @@
           }
         }
       },
+      sortedConsolidated1 () {
+        return {
+          ...this.chart,
+          series: filterData('Консолидированный', 'Доходы', this.consolidatedYears),
+          xAxis: {
+            categories: this.consolidatedYears.sort((a, b) => { return a - b })
+          },
+          title: {
+            text: this.consolidatedType
+          }
+        }
+      },
+      sortedConsolidated2 () {
+        return {
+          ...this.chart,
+          series: filterData('Консолидированный', 'Расходы', this.consolidatedYears),
+          xAxis: {
+            categories: this.consolidatedYears.sort((a, b) => { return a - b })
+          },
+          title: {
+            text: this.consolidatedType
+          }
+        }
+      },
       sortedRepublican () {
         return {
           ...this.chart,
@@ -281,6 +319,7 @@
     methods: {
       consCheckAll (val) {
         if (val) {
+          this.consolidatedYears = []
           this.consAvailableYears.forEach(i => {
             this.consolidatedYears.push(i)
           })
@@ -290,6 +329,7 @@
       },
       repubCheckAll (val) {
         if (val) {
+          this.republicanYears = []
           this.repubAvailableYears.forEach(i => {
             this.republicanYears.push(i)
           })
@@ -299,6 +339,7 @@
       },
       stateCheckAll (val) {
         if (val) {
+          this.stateYears = []
           this.stateAvailableYears.forEach(i => {
             this.stateYears.push(i)
           })
