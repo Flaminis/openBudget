@@ -1,5 +1,5 @@
 <template>
-  <nav class="navbar is-info">
+  <nav class="navbar is-success [is-info, is-primary]">
     <div class="navbar-brand">
       <router-link to="/" class="navbar-item">
         <strong>OpenBudget</strong>&nbsp;&nbsp;
@@ -27,3 +27,24 @@
     </div>
   </nav>
 </template>
+<style>
+.navbar-brand {
+  background-color: #1A535C;
+}
+.navbar-menu {
+  background-color: #01D1B2;
+}
+.navbar-item:hover
+{ background-color: #1A535C!important;}
+/*.navbar-info {
+  background-color: #01D1B2;
+  color: #01D1B2;
+}*/
+
+/*a:hover {
+  font-weight:bold;
+  color: black;
+  background-color: #01D1B2;
+}*/
+
+</style>

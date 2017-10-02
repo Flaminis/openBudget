@@ -13,49 +13,7 @@
         </div>
 
         <b-tabs type="is-boxed is-centered" size="is-medium">
-          <b-tab-item label="Консолидированный">
-            <br>
-            <div class="columns">
-              <div class="column is-2">
-                <br>
-                <b-field>
-                  <b-radio-button
-                    v-model="consolidatedType"
-                    native-value="Доходы">
-                    <span>Доходы</span>
-                  </b-radio-button>
-                  <b-radio-button
-                    v-model="consolidatedType"
-                    native-value="Расходы">
-                    <span>Расходы</span>
-                  </b-radio-button>
-                </b-field>
-                <br>
-                <div class="columns">
-                  <div class="column">
-                    <b-checkbox @input="consCheckAll">Отметить все</b-checkbox>
-                  </div>
-                </div>
-                <div class="columns is-multiline">
-                  <div class="column is-half" v-for="(year, index) in consAvailableYears" :value="year" :key="index">
-                    <b-checkbox v-model="consolidatedYears" :native-value="year">{{ year }}</b-checkbox>
-                  </div>
-                </div>
-              </div>
-
-              <div class="column is-10">
-                <div class="content">
-                  <!--<div class="select">-->
-                  <!--<select v-model="incomesYear">-->
-                  <!--<option v-for="(year, index) in availableYears" :value="year" :key="index">{{ year }}</option>-->
-                  <!--</select>-->
-                  <!--</div>-->
-                  <highcharts :options="sortedConsolidated" ref="highcharts"></highcharts>
-                </div>
-              </div>
-            </div>
-          </b-tab-item>
-          <b-tab-item label="Республикаский">
+          <b-tab-item label="Республиканский">
             <br>
             <div class="columns">
               <div class="column is-2">
@@ -124,6 +82,48 @@
               <div class="column is-10">
                 <div class="content">
                   <highcharts :options="sortedState" ref="highcharts"></highcharts>
+                </div>
+              </div>
+            </div>
+          </b-tab-item>
+          <b-tab-item label="Консолидированный">
+            <br>
+            <div class="columns">
+              <div class="column is-2">
+                <br>
+                <b-field>
+                  <b-radio-button
+                    v-model="consolidatedType"
+                    native-value="Доходы">
+                    <span>Доходы</span>
+                  </b-radio-button>
+                  <b-radio-button
+                    v-model="consolidatedType"
+                    native-value="Расходы">
+                    <span>Расходы</span>
+                  </b-radio-button>
+                </b-field>
+                <br>
+                <div class="columns">
+                  <div class="column">
+                    <b-checkbox @input="consCheckAll">Отметить все</b-checkbox>
+                  </div>
+                </div>
+                <div class="columns is-multiline">
+                  <div class="column is-half" v-for="(year, index) in consAvailableYears" :value="year" :key="index">
+                    <b-checkbox v-model="consolidatedYears" :native-value="year">{{ year }}</b-checkbox>
+                  </div>
+                </div>
+              </div>
+
+              <div class="column is-10">
+                <div class="content">
+                  <!--<div class="select">-->
+                  <!--<select v-model="incomesYear">-->
+                  <!--<option v-for="(year, index) in availableYears" :value="year" :key="index">{{ year }}</option>-->
+                  <!--</select>-->
+                  <!--</div>-->
+                  <highcharts :options="sortedConsolidated" ref="highcharts"></highcharts>
                 </div>
               </div>
             </div>
@@ -198,19 +198,24 @@
               text: null
             },
             labels: {
-              format: '{value} млрд'
+              format: '{value} млрд. тг'
+              // enabled: false
             },
             stackLabels: {
               enabled: true,
-              format: '{total} млрд'
+              format: '{total} млрд. тг'
             }
           },
           legend: {
-            enabled: false
+            enabled: true,
+            align: 'right',
+            borderColor: '#01D1B2',
+            borderRadius: 4,
+            borderWidth: 1
           },
           tooltip: {
             headerFormat: '<b>{series.name}</b><br/>',
-            pointFormat: '{point.y}'
+            pointFormat: '{point.y} млрд. тг'
           },
           plotOptions: {
             column: {

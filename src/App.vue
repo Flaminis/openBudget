@@ -8,8 +8,7 @@
 <script>
 import Navigation from './components/Navigation'
 import openData from './openbudget.json'
-import { handleData, doingStaff } from './utility'
-
+import { handleData, doingStaff, setupMap } from './utility'
 export default {
   name: 'app',
   components: {
@@ -26,10 +25,9 @@ export default {
   },
   created () {
     let data = handleData(openData)
-//    console.log(data)
-    // eslint-disable-next-line
-    let test = doingStaff(data)
-//    console.log(test)
+    let q = setupMap()
+    console.log(q)
+    doingStaff(data)
   }
 }
 </script>
@@ -39,6 +37,8 @@ export default {
 @import "~bulma/sass/utilities/_all"; // Set your colors
 @import "~bulma";
 @import "~buefy/src/scss/buefy";
+$primary: #FFFFFF;
+$primary-invert: findColorInvert($primary);
   .section--gray-bg {
     background-color: #f5f5f5;
   }
@@ -47,4 +47,3 @@ export default {
     justify-content: center;
   }
 </style>
-

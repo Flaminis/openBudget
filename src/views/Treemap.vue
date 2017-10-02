@@ -85,7 +85,7 @@
           alternateStartingDirection: true,
           levels: [{
             level: 1,
-            layoutAlgorithm: 'sliceAndDice',
+            layoutAlgorithm: 'strip',
             dataLabels: {
               enabled: true,
               align: 'left',
@@ -95,7 +95,11 @@
                 fontWeight: 'bold'
               }
             }
-          }]
+          }],
+          tooltip: {
+            headerFormat: '<span style="font-size: 22px">{point.key}</span><br/>',
+            pointFormat: '<span style="font-size: 13px">{point.value} </span>млрд. тенге'
+          }
         },
         year: 2016,
         budget: 'Республиканский',

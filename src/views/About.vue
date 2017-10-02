@@ -6,16 +6,16 @@
           <div class="column is-6">
             <h1>О проекте</h1>
             <p>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet aut corporis, cum debitis dolores eos esse harum illo impedit iusto molestias nemo obcaecati, pariatur perferendis placeat quo sit vel, velit.
+              OpenBudget.kz нацелен на обеспечение доступа к информации о бюджетной системе Республики Казахстан,
             </p>
             <p>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet aut corporis, cum debitis dolores eos esse harum illo impedit iusto molestias nemo obcaecati, pariatur perferendis placeat quo sit vel, velit.
+              процессе в Республике Казахстан, данным бюджетной системы, Национального фонда Республики Казахстана, внебюджетных
             </p>
             <p>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet aut corporis, cum debitis dolores eos esse harum illo impedit iusto molestias nemo obcaecati, pariatur perferendis placeat quo sit vel, velit.
+              фондов (ЕНПФ, ГФСС, ФСМС), квазигосударственного сектора.
             </p>
             <p>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet aut corporis, cum debitis dolores eos esse harum illo impedit iusto molestias nemo obcaecati, pariatur perferendis placeat quo sit vel, velit.
+              еще будет раздел "О бюджетной системе" и "Методика OpenBudget.kz"
             </p>
           </div>
         </div>

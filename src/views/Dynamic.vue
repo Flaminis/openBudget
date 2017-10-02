@@ -14,98 +14,7 @@
         <div class="columns">
           <div class="column is-12">
             <b-tabs type="is-boxed is-centered" size="is-medium">
-              <b-tab-item label="Консолидированный">
-                <br>
-                <div class="content">
-                  <div class="columns">
-                    <div class="column is-8 is-offset-2">
-                      <div class="is-flex align-center">
-                        <div class="field is-horizontal">
-                          <div class="field-label is-normal">
-                            <label class="label">Сравнить</label>
-                          </div>
-                          <div class="field-body">
-                            <div class="field is-narrow">
-                              <div class="control">
-                                <div class="select">
-                                  <select v-model="consCompare.type">
-                                    <option value="Доходы" selected>Доходы</option>
-                                    <option value="Расходы">Расходы</option>
-                                  </select>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        <div class="field is-horizontal">
-                          <div class="field-label is-normal">
-                            <label class="label">между</label>
-                          </div>
-                          <div class="field-body">
-                            <div class="field is-narrow">
-                              <div class="control">
-                                <div class="select">
-                                  <select v-model="consCompare.from">
-                                    <option v-for="(year, index) in consAvailableYears"
-                                            :value="year"
-                                            :key="index">{{ year }}</option>
-                                  </select>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        <div class="field is-horizontal">
-                          <div class="field-label is-normal">
-                            <label class="label">и</label>
-                          </div>
-                          <div class="field-body">
-                            <div class="field is-narrow">
-                              <div class="control">
-                                <div class="select">
-                                  <select v-model="consCompare.to">
-                                    <option v-for="(year, index) in consAvailableYears" :value="year" :key="index">{{ year }}</option>
-                                  </select>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="field is-horizontal">
-                          <div class="field-label">
-                            <!-- Left empty for spacing -->
-                          </div>
-                          <div class="field-body">
-                            <div class="field">
-                              <div class="control">
-                                <button class="button is-primary" @click="showConsComparision">
-                                  Готово
-                                </button>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <div v-if="consCompare.result && consCompare.percents">
-                        <br>
-                        <div class="is-flex align-center">
-                          <div>
-                            <h2 class="is-marginless">{{ consCompare.result }} млрд. тг</h2>
-                          </div>
-                          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                          <div>
-                            <h2 class="is-marginless">{{ consCompare.percents }} %</h2>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <highcharts :options="sortedConsolidated" ref="highcharts"></highcharts>
-                </div>
-              </b-tab-item>
-              <b-tab-item label="Республикаский">
+              <b-tab-item label="Республиканский">
                 <br>
                 <div class="content">
                   <div class="columns">
@@ -183,11 +92,11 @@
                         <br>
                         <div class="is-flex align-center">
                           <div>
-                            <h2 class="is-marginless">{{ repubCompare.result }} млрд. тг</h2>
+                            <h2 class="is-marginless"><span class="Highlighted">{{ repubCompare.result }}</span> млрд тенге</h2>
                           </div>
                           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                           <div>
-                            <h2 class="is-marginless">{{ repubCompare.percents }} %</h2>
+                            <h2 class="is-marginless"><span class="Highlighted">{{ repubCompare.percents }}</span> %</h2>
                           </div>
                         </div>
                       </div>
@@ -274,17 +183,108 @@
                         <br>
                         <div class="is-flex align-center">
                           <div>
-                            <h2 class="is-marginless">{{ stateCompare.result }} млрд. тг</h2>
+                            <h2 class="is-marginless"><span class="Highlighted">{{ stateCompare.result }}</span> млрд. тг</h2>
                           </div>
                           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                           <div>
-                            <h2 class="is-marginless">{{ stateCompare.percents }} %</h2>
+                            <h2 class="is-marginless"><span class="Highlighted">{{ stateCompare.percents }}</span> %</h2>
                           </div>
                         </div>
                       </div>
                     </div>
                   </div>
                   <highcharts :options="sortedState" ref="highcharts"></highcharts>
+                </div>
+              </b-tab-item>
+              <b-tab-item label="Консолидированный">
+                <br>
+                <div class="content">
+                  <div class="columns">
+                    <div class="column is-8 is-offset-2">
+                      <div class="is-flex align-center">
+                        <div class="field is-horizontal">
+                          <div class="field-label is-normal">
+                            <label class="label">Сравнить</label>
+                          </div>
+                          <div class="field-body">
+                            <div class="field is-narrow">
+                              <div class="control">
+                                <div class="select">
+                                  <select v-model="consCompare.type">
+                                    <option value="Доходы" selected>Доходы</option>
+                                    <option value="Расходы">Расходы</option>
+                                  </select>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <div class="field is-horizontal">
+                          <div class="field-label is-normal">
+                            <label class="label">между</label>
+                          </div>
+                          <div class="field-body">
+                            <div class="field is-narrow">
+                              <div class="control">
+                                <div class="select">
+                                  <select v-model="consCompare.from">
+                                    <option v-for="(year, index) in consAvailableYears"
+                                            :value="year"
+                                            :key="index">{{ year }}</option>
+                                  </select>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <div class="field is-horizontal">
+                          <div class="field-label is-normal">
+                            <label class="label">и</label>
+                          </div>
+                          <div class="field-body">
+                            <div class="field is-narrow">
+                              <div class="control">
+                                <div class="select">
+                                  <select v-model="consCompare.to">
+                                    <option v-for="(year, index) in consAvailableYears" :value="year" :key="index">{{ year }}</option>
+                                  </select>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="field is-horizontal">
+                          <div class="field-label">
+                            <!-- Left empty for spacing -->
+                          </div>
+                          <div class="field-body">
+                            <div class="field">
+                              <div class="control">
+                                <button class="button is-primary" @click="showConsComparision">
+                                  Готово
+                                </button>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div v-if="consCompare.result && consCompare.percents">
+                        <br>
+                        <div class="is-flex align-center">
+                          <div>
+                            <h2 class="is-marginless"><span class="Highlighted">{{ consCompare.result }}</span> млрд. тг</h2>
+                          </div>
+                          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                          <div>
+                            <h2 class="is-marginless"><span class="Highlighted">{{ consCompare.percents }}</span> %</h2>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <highcharts :options="sortedConsolidated" ref="highcharts"></highcharts>
                 </div>
               </b-tab-item>
             </b-tabs>
@@ -386,24 +386,24 @@
 
         consCompare: {
           type: 'Доходы',
-          from: 2015,
-          to: 2016,
+          from: 2016,
+          to: 2015,
           result: null,
           percents: null
         },
 
         repubCompare: {
           type: 'Доходы',
-          from: 2015,
-          to: 2016,
+          from: 2016,
+          to: 2015,
           result: null,
           percents: null
         },
 
         stateCompare: {
           type: 'Доходы',
-          from: 2015,
-          to: 2016,
+          from: 2016,
+          to: 2015,
           result: null,
           percents: null
         }
@@ -495,3 +495,15 @@
     }
   }
 </script>
+<style>
+.b-tabs {
+  /*color: #F333FF !important;*/
+column-rule-color: #ffffff;
+}
+.Highlighted{
+  color: #1A535C;
+  position: relative;
+  font-size: 1.5em;
+  font-weight:300;
+}
+</style>

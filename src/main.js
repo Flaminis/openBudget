@@ -14,18 +14,25 @@ Vue.use(Buefy)
 // Highcharts
 import VueHighcharts from 'vue-highcharts'
 import Highcharts from 'highcharts/highcharts'
+import Highmaps from 'highcharts/highmaps'
+import loadMap from 'highcharts/modules/map'
+
 import HighchartsTheme from './hightcharts-theme'
 import loadTreemap from 'highcharts/modules/treemap'
+
 import noData from 'highcharts/modules/no-data-to-display.js'
+
 Highcharts.setOptions(HighchartsTheme)
 loadTreemap(Highcharts)
+loadMap(Highcharts)
+loadMap(Highmaps)
 noData(Highcharts)
 Highcharts.setOptions({
   lang: {
     noData: 'Нет данных для отображения'
   }
 })
-Vue.use(VueHighcharts)
+Vue.use(VueHighcharts, { Highcharts, Highmaps })
 // App
 import App from './App'
 

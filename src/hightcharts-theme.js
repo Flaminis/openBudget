@@ -1,57 +1,48 @@
-export default {
-  colors: ['#7cb5ec', '#f7a35c', '#90ee7e', '#7798BF', '#aaeeee', '#ff0066', '#eeaaee',
-    '#55BF3B', '#DF5353', '#7798BF', '#aaeeee'],
-  chart: {
-    backgroundColor: null,
-    style: {
-      fontFamily: 'Dosis, sans-serif'
+export default{
+  colors: ['#1A535C', '#01D1B2', '#FFE66D', '#FF6B6B'],
+  chart:
+  {
+    style:
+    {
+      color: '#333',
+      fontFamily: 'Helvetica Neue'
     }
   },
-  title: {
-    style: {
-      fontSize: '16px',
-      fontWeight: 'bold',
-      textTransform: 'uppercase'
+  title:
+  {
+    style:
+    {
+      fontFamily: 'Helvetica Neue'
     }
   },
-  tooltip: {
-    borderWidth: 0,
-    backgroundColor: 'rgba(219,219,216,0.8)',
-    shadow: false
-  },
-  legend: {
-    itemStyle: {
-      fontWeight: 'bold',
-      fontSize: '13px'
+  subtitle:
+  {
+    style:
+    {
+      fontFamily: 'Helvetica Neue',
+      fontWeight: '100'
     }
   },
-  xAxis: {
-    gridLineWidth: 1,
-    labels: {
-      style: {
-        fontSize: '12px'
-      }
-    }
+  legend:
+  {
+    align: 'right',
+    verticalAlign: 'bottom'
   },
-  yAxis: {
-    minorTickInterval: 'auto',
-    title: {
-      style: {
-        textTransform: 'uppercase'
-      }
-    },
-    labels: {
-      style: {
-        fontSize: '12px'
-      }
-    }
+  xAxis:
+  {
+    gridLineWidth: 1.1,
+    gridLineColor: '#7C877C',
+    lineColor: '#7C877C',
+    minorGridLineColor: '#7C877C',
+    tickColor: '#7C877C',
+    tickWidth: 1
   },
-  plotOptions: {
-    candlestick: {
-      lineColor: '#404048'
-    }
-  },
-  // General
-  background2: '#F0F0EA'
-
+  yAxis:
+  {
+    gridLineColor: '#7C877C',
+    lineColor: '#7C877C',
+    minorGridLineColor: '#7C877C',
+    tickColor: '#7C877C',
+    tickWidth: 1
+  }
 }

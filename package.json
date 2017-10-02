@@ -2,7 +2,7 @@
   "name": "open_budget",
   "version": "1.0.0",
   "description": "A Vue.js project",
-  "author": "Айрат Жаншуаков <dakanca@gmail.com>",
+  "author": "Yerbol Kopzhasar <kopjasar@gmail.com>",
   "private": true,
   "scripts": {
     "dev": "node build/dev-server.js",
@@ -18,7 +18,8 @@
     "smooth-scroll": "^12.1.5",
     "vue": "^2.4.2",
     "vue-highcharts": "0.0.10",
-    "vue-router": "^2.7.0"
+    "vue-router": "^2.7.0",
+    "vue-parallaxy": "^1.0.3"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.2",
