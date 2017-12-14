@@ -15,11 +15,14 @@
     "buefy": "^0.5.2",
     "highcharts": "^5.0.14",
     "lodash": "^4.17.4",
+    "parse": "^1.10.0",
     "smooth-scroll": "^12.1.5",
     "vue": "^2.4.2",
     "vue-highcharts": "0.0.10",
+    "vue-material-input": "^1.2.0",
+    "vue-parallaxy": "^1.0.3",
     "vue-router": "^2.7.0",
-    "vue-parallaxy": "^1.0.3"
+    "vuelidate": "^0.6.0"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.2",

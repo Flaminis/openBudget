@@ -23,3 +23,15 @@
     </div>
   </div>
 </template>
+<script>
+// define the external API URL
+export default {
+  name: 'movie', // component name
+  data () {
+    return {
+      name: '',
+      age: 0
+    }
+  }
+}
+</script>

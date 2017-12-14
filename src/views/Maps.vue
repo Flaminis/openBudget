@@ -25,9 +25,7 @@
       </div>
     </div>
   </div>
-
 </template>
-
 <script>
 //  import openData from '../converted-data.json'
 //  import _ from 'lodash'

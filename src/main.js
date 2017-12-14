@@ -6,17 +6,19 @@ import SmoothScroll from 'smooth-scroll'
 const scroll = new SmoothScroll('a[href*="#"]')
 // Vue
 import Vue from 'vue'
+import Vuelidate from 'vuelidate'
 import router from './router'
 // Buefy
 import Buefy from 'buefy'
 import 'buefy/lib/buefy.css'
 Vue.use(Buefy)
+Vue.use(Vuelidate)
 // Highcharts
 import VueHighcharts from 'vue-highcharts'
 import Highcharts from 'highcharts/highcharts'
 import Highmaps from 'highcharts/highmaps'
 import loadMap from 'highcharts/modules/map'
-
+import App from './App'
 import HighchartsTheme from './hightcharts-theme'
 import loadTreemap from 'highcharts/modules/treemap'
 
@@ -33,9 +35,7 @@ Highcharts.setOptions({
   }
 })
 Vue.use(VueHighcharts, { Highcharts, Highmaps })
-// App
-import App from './App'
-
+Vue.use(Vuelidate)
 Vue.config.productionTip = false
 
 /* eslint-disable no-new */
