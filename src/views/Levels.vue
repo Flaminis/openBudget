@@ -1,5 +1,5 @@
 <template>
-  <div class="section section--gray-bg">
+  <div class="section">
     <div id="levels">
       <div class="container">
         <div class="columns">

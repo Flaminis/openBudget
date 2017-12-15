@@ -3,7 +3,7 @@
 // General
 import SmoothScroll from 'smooth-scroll'
 // eslint-disable-next-line
-const scroll = new SmoothScroll('a[href*="#"]')
+const scroll = new SmoothScroll('[data-scroll]')
 // Vue
 import Vue from 'vue'
 import Vuelidate from 'vuelidate'
