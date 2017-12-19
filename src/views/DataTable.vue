@@ -10,31 +10,41 @@
               </h2>
             </div>
             <b-table :data="dataCollection" 
-              :paginated="isPaginated"
+              :striped="true" 
+              :narrowed="true"
+              :loading="loading"
+
+              paginated
+              backend-pagination
+              :total="total"
               :per-page="perPage"
-              :current-page.sync="currentPage"
-              :pagination-simple="isPaginationSimple"
-              :default-sort-direction="defaultSortDirection"
+              @page-change="onPageChange"
+
               default-sort="user.first_name">
 
               <template slot-scope="props">
-                <b-table-column label="Бюджетная программа">
-                    {{ props.row.budget_programm }}
+                <b-table-column label="Бюджетная программа"
+                  width="220">
+                    {{ props.row.budget_programm | truncate(80) }}
                 </b-table-column>
 
-                <b-table-column label="Вид соц реализаций">
-                    {{ props.row.vid_soc_real }}
+                <b-table-column label="Вид соц реализаций"
+                  width="80">
+                    {{ props.row.vid_soc_real | truncate(80) }}
                 </b-table-column>
 
-                <b-table-column label="Вид гос сод">
+                <b-table-column label="Вид гос сод"
+                  width="320">
                     {{ props.row.vid_gos_sod }}
                 </b-table-column>
 
-                <b-table-column label="Текущие или развитие">
+                <b-table-column label="Текущие или развитие"
+                  width="120">
                     {{ props.row.tekushee_ili_razvitie }}
                 </b-table-column>
 
-                <b-table-column label="Администратор бюджетной программы">
+                <b-table-column label="Администратор бюджетной программы"
+                  width="320">
                     {{ props.row.administrator_budget_program }}
                 </b-table-column>
 
@@ -77,12 +87,13 @@ export default {
   data () {
     return {
       dataCollection: [],
-
-      isPaginated: true,
-      isPaginationSimple: false,
-      defaultSortDirection: 'asc',
-      currentPage: 1,
-      perPage: 5,
+      total: 0,
+      loading: false,
+      sortField: 'vote_count',
+      sortOrder: 'desc',
+      defaultSortOrder: 'desc',
+      page: 1,
+      perPage: 20,
 
       ParseData: Parse.Object.extend('Programme'),
       ParseQuery: null
@@ -90,40 +101,68 @@ export default {
   },
 
   methods: {
-    fillData () {
+    /**
+     * Load async data
+     */
+    loadAsyncData () {
+      const ctx = this
+      this.loading = true
+      this.ParseQuery = new Parse.Query(this.ParseData)
+      this.ParseQuery.select(
+        'budget_programm',
+        'vid_soc_real',
+        'vid_gos_sod',
+        'tekushee_ili_razvitie',
+        'administrator_budget_program',
+        'year',
+        'budget_2016',
+        'budget_2017',
+        'budget_2018',
+        )
+      this.ParseQuery.limit(this.perPage)
+      this.ParseQuery.skip(this.perPage * this.page)
 
+      this.ParseQuery.count({
+        success (count) {
+          let currentTotal = count
+          if (count / ctx.perPage > 1000) {
+            currentTotal = ctx.perPage * 1000
+          }
+          ctx.total = currentTotal
+        },
+        error (error) {
+          console.log(error)
+        }
+      })
+
+      this.ParseQuery.find().then((results) => {
+        for (let i = 0; i < results.length; i++) {
+          ctx.dataCollection.push({
+            budget_programm: results[i].get('budget_programm'),
+            vid_soc_real: results[i].get('vid_soc_real'),
+            vid_gos_sod: results[i].get('vid_gos_sod'),
+            tekushee_ili_razvitie: results[i].get('tekushee_ili_razvitie'),
+            administrator_budget_program: results[i].get('administrator_budget_program'),
+            year: results[i].get('year'),
+            budget_2016: results[i].get('budget_2016'),
+            budget_2017: results[i].get('budget_2017'),
+            budget_2018: results[i].get('budget_2018')
+          })
+        }
+        this.loading = false
+      })
+    },
+    /**
+    * Handle page-change event
+    */
+    onPageChange (page) {
+      this.page = page
+      this.loadAsyncData()
     }
   },
 
-  created () {
-    const ctx = this
-    this.ParseQuery = new Parse.Query(this.ParseData)
-    this.ParseQuery.select(
-      'budget_programm',
-      'vid_soc_real',
-      'vid_gos_sod',
-      'tekushee_ili_razvitie',
-      'administrator_budget_program',
-      'year',
-      'budget_2016',
-      'budget_2017',
-      'budget_2018',
-      )
-    this.ParseQuery.find().then((results) => {
-      for (let i = 0; i < results.length; i++) {
-        ctx.dataCollection.push({
-          budget_programm: results[i].get('budget_programm'),
-          vid_soc_real: results[i].get('vid_soc_real'),
-          vid_gos_sod: results[i].get('vid_gos_sod'),
-          tekushee_ili_razvitie: results[i].get('tekushee_ili_razvitie'),
-          administrator_budget_program: results[i].get('administrator_budget_program'),
-          year: results[i].get('year'),
-          budget_2016: results[i].get('budget_2016'),
-          budget_2017: results[i].get('budget_2017'),
-          budget_2018: results[i].get('budget_2018')
-        })
-      }
-    })
+  mounted () {
+    this.loadAsyncData()
   }
 }
 </script>

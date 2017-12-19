@@ -39,11 +39,23 @@ export default {
 @import "~buefy/src/scss/buefy";
 $primary: #FFFFFF;
 $primary-invert: findColorInvert($primary);
-  .section--gray-bg {
-    background-color: #f5f5f5;
-  }
+$table-cell-heading-color: red;
+$table-head-cell-color: blue;
+.section--gray-bg {
+  background-color: #f5f5f5;
+}
 
-  .align-center {
-    justify-content: center;
+.align-center {
+  justify-content: center;
+}
+table.table {
+  font-size: 13px;
+  th {
+    background-color: #1A535C;
+    color: #ffffff;
   }
+  &.is-striped tbody tr:not(.is-selected):nth-child(even) {
+    background-color: #f3fffd;
+  }
+}
 </style>
