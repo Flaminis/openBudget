@@ -120,7 +120,7 @@ export default {
         'budget_2018',
         )
       this.ParseQuery.limit(this.perPage)
-      this.ParseQuery.skip(this.perPage * this.page)
+      this.ParseQuery.skip((this.page * this.perPage) - this.perPage)
 
       this.ParseQuery.count({
         success (count) {
@@ -136,8 +136,9 @@ export default {
       })
 
       this.ParseQuery.find().then((results) => {
+        let data = []
         for (let i = 0; i < results.length; i++) {
-          ctx.dataCollection.push({
+          data.push({
             budget_programm: results[i].get('budget_programm'),
             vid_soc_real: results[i].get('vid_soc_real'),
             vid_gos_sod: results[i].get('vid_gos_sod'),
@@ -149,6 +150,7 @@ export default {
             budget_2018: results[i].get('budget_2018')
           })
         }
+        ctx.dataCollection = data
         this.loading = false
       })
     },

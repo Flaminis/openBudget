@@ -35,12 +35,11 @@ export default {
 <style lang="scss">
 // Import Bulma's core
 @import "~bulma/sass/utilities/_all"; // Set your colors
+$primary: #00d1b2;
+$primary-invert: findColorInvert($primary);
+$tabs-link-active-color: $primary;
 @import "~bulma";
 @import "~buefy/src/scss/buefy";
-$primary: #FFFFFF;
-$primary-invert: findColorInvert($primary);
-$table-cell-heading-color: red;
-$table-head-cell-color: blue;
 .section--gray-bg {
   background-color: #f5f5f5;
 }
