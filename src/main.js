@@ -3,11 +3,13 @@
 // General
 import SmoothScroll from 'smooth-scroll'
 // eslint-disable-next-line
-const scroll = new SmoothScroll('a[href*="#"]')
+const scroll = new SmoothScroll('[data-scroll]')
 // Vue
 import Vue from 'vue'
 import Vuelidate from 'vuelidate'
 import router from './router'
+import * as filters from './filters'
+Object.keys(filters).forEach(key => { Vue.filter(key, filters[key]) })
 // Buefy
 import Buefy from 'buefy'
 import 'buefy/lib/buefy.css'

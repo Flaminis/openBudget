@@ -8,16 +8,16 @@
     </div>
     <div id="navMenuTransparentExample" class="navbar-menu">
       <div class="navbar-start">
-        <a class="navbar-item" href="/#total">
+        <a data-scroll class="navbar-item" href="/#total">
           Бюджет
         </a>
-        <a class="navbar-item" href="/#treemap">
+        <a data-scroll class="navbar-item" href="/#treemap">
           По видам
         </a>
-        <a class="navbar-item" href="/#dynamic">
+        <a data-scroll class="navbar-item" href="/#dynamic">
           Динамика
         </a>
-        <a class="navbar-item" href="/#levels">
+        <a data-scroll class="navbar-item" href="/#levels">
           Уровни
         </a>
         <router-link to="/about" class="navbar-item">

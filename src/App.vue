@@ -35,15 +35,26 @@ export default {
 <style lang="scss">
 // Import Bulma's core
 @import "~bulma/sass/utilities/_all"; // Set your colors
+$primary: #00d1b2;
+$primary-invert: findColorInvert($primary);
+$tabs-link-active-color: $primary;
 @import "~bulma";
 @import "~buefy/src/scss/buefy";
-$primary: #FFFFFF;
-$primary-invert: findColorInvert($primary);
-  .section--gray-bg {
-    background-color: #f5f5f5;
-  }
+.section--gray-bg {
+  background-color: #f5f5f5;
+}
 
-  .align-center {
-    justify-content: center;
+.align-center {
+  justify-content: center;
+}
+table.table {
+  font-size: 13px;
+  th {
+    background-color: #1A535C;
+    color: #ffffff;
   }
+  &.is-striped tbody tr:not(.is-selected):nth-child(even) {
+    background-color: #f3fffd;
+  }
+}
 </style>

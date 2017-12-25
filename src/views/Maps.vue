@@ -1,5 +1,5 @@
 <template>
-  <div class="section">
+  <div class="section section--gray-bg">
     <div id="maps">
       <div class="container">
         <div class="content">
@@ -52,7 +52,6 @@
                 ['kz-wk', q['kz-wk']], // zapadno kz
                 ['kz-qg', q['kz-qg']], // Karaganda
                 ['kz-sk', q['kz-sk']]]
-        console.log(o)
         return (o)
       }
     }
